@@ -48,12 +48,7 @@ public class AddressTextAdapter extends AbstractWheelTextAdapter {
         return mDatas.get(index);
     }
 
-    public List<String> getDatas() {
-        return mDatas;
-    }
 
-    public void setDatas(List<String> datas) {
-        this.mDatas = datas;
-        notifyDataChangedEvent();
-    }
+
+
 }

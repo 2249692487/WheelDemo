@@ -48,15 +48,16 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
             mDatas.add(i+"");
         }
 
-
+        //设置可以见的条目数量， 上中下
         mWheelViewTimer.setVisibleItems(5);
 
 
-
+        //设置适配器
         mTimerAdapter = new TimerAdapter(this,mDatas);
 
         mWheelViewTimer.setViewAdapter(mTimerAdapter);
-        //放在最后面
+
+        //放在最后面 设置当前显示的
         mWheelViewTimer.setCurrentItem(5);
 
 

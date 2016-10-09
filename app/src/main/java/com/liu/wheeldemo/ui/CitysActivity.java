@@ -107,10 +107,12 @@ public class CitysActivity extends AppCompatActivity implements View.OnClickList
                     mAreaList.add(area.name);
                 }
 
+                //市-区对该
                 mAreaDatasMap.put(city.name,mAreaList);
 
 
             }
+            //省支市对应
             mCitisDatasMap.put(data.name,mCitysList);
 
 
@@ -162,10 +164,17 @@ public class CitysActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
+    /**
+     * 滚动完成时切换
+     */
     private void initScrllListener() {
+        /**
+         * 省滚动完成时切换 城市与地区
+         */
         mProvince.addScrollingListener(new OnWheelScrollListener() {
             @Override
             public void onScrollingStarted(WheelView wheel) {
+                //标记位-开始滚动
                 proviceScrolling =true;
             }
 
@@ -175,17 +184,19 @@ public class CitysActivity extends AppCompatActivity implements View.OnClickList
                 proviceScrolling =false;
                 //省滚动完成后切换市
                 updateCities(mCity,mCitisDatasMap.get(mProviceAdapter.getName(mProvince.getCurrentItem())));
+                //更新地区
                 updateArea(mArea,mAreaDatasMap.get(mCityAdapter.getName(mCity.getCurrentItem())));
 
             }
         });
 
         /**
-         * 市滚东中
+         * 市滚动 完成时切换地区
          */
         mCity.addScrollingListener(new OnWheelScrollListener() {
             @Override
             public void onScrollingStarted(WheelView wheel) {
+                //标记位-开始滚动
                 cityScrolling=true;
             }
 
@@ -213,14 +224,13 @@ public class CitysActivity extends AppCompatActivity implements View.OnClickList
         mProvince.addChangingListener(new OnWheelChangedListener() {
             @Override
             public void onChanged(WheelView wheel, int oldValue, int newValue) {
-                //Log.d("vivi", "onChanged:  oldValue  "+ oldValue+ "  newValue  "+newValue);
-               // List<String> test = mCitisDatasMap.get(mProviceAdapter.getName(newValue));
 
+                //省在滚动
                 if(proviceScrolling){
-
+                    //更新城市
                     updateCities(mCity,mCitisDatasMap.get(mProviceAdapter.getName(newValue)));
 
-
+                        //更新地区
                         updateArea(mArea,mAreaDatasMap.get(mCityAdapter.getName(mCity.getCurrentItem())));
 
                 }

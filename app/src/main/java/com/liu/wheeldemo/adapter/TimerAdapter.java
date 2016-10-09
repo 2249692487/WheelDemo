@@ -19,13 +19,12 @@ public class TimerAdapter extends AbstractWheelTextAdapter {
 
     List<String> mDatas;
     Context      mContext;
-    private int maxTextSize = 24;
-    private int minTextSize = 14;
+
 
     public TimerAdapter(Context context, List<String> datas) {
 
         super(context, R.layout.item_time, NO_RESOURCE);
-        // super(context,R.layout.item_time,NO_RESOURCE,0,maxTextSize,minTextSize);
+
         mContext = context;
         mDatas = datas;
         setItemTextResource(R.id.time);
@@ -48,7 +47,7 @@ public class TimerAdapter extends AbstractWheelTextAdapter {
 
         return view;
 
-        // return super.getItem(index, convertView, parent);
+
     }
 
 
